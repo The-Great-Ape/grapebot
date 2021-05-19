@@ -12,6 +12,7 @@ const COMMANDS = {
   DELETE_DISCORDKEY: 'delete-discordkey',
   GET_DISCORDKEY: 'get-discordkey',
   HELP: 'help',
+  BALANCE: 'balance',
 };
 
 const OK_WITHOUT_LOGIN_COMMANDS = [
