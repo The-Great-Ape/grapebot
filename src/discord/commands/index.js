@@ -13,6 +13,7 @@ const COMMANDS = {
   GET_DISCORDKEY: 'get-discordkey',
   HELP: 'help',
   BALANCE: 'balance',
+  VERIFY: 'verify',
 };
 
 const OK_WITHOUT_LOGIN_COMMANDS = [
