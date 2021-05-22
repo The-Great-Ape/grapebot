@@ -1,6 +1,6 @@
 const DB = require('./db/models');
 
-const { User } = DB;
+const { User, Verified } = DB;
 
 const saveUser = async (user) => {
   if (!user) {
@@ -21,6 +21,28 @@ const saveUser = async (user) => {
       });
 
       const newlyCreatedUser = await User.create(user, {
+        transaction: t,
+      });
+
+      return newlyCreatedUser;
+    });
+    return result;
+  } catch (e) {
+    throw new Error(`Could not save user: ${user.discordId}`);
+  }
+};
+
+const saveVerifiedUser = async (user) => {
+  try {
+    const result = await DB.sequelize.transaction(async (t) => {
+      await Verified.destroy({
+        where: {
+          discordId: user.discordId,
+        },
+        transaction: t,
+      });
+
+      const newlyCreatedUser = await Verified.create(user, {
         transaction: t,
       });
 
@@ -53,4 +75,5 @@ export default {
   saveUser,
   getUser,
   deleteUser,
+  saveVerifiedUser,
 };
