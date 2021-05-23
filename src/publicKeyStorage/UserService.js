@@ -32,25 +32,25 @@ const saveUser = async (user) => {
   }
 };
 
-const saveVerifiedUser = async (user) => {
+const saveVerifiedUser = async (verify) => {
   try {
     const result = await DB.sequelize.transaction(async (t) => {
       await Verified.destroy({
         where: {
-          discordId: user.discordId,
+          discordId: verify.discordId,
         },
         transaction: t,
       });
 
-      const newlyCreatedUser = await Verified.create(user, {
+      const newlyCreatedVerification = await Verified.create(verify, {
         transaction: t,
       });
 
-      return newlyCreatedUser;
+      return newlyCreatedVerification;
     });
     return result;
   } catch (e) {
-    throw new Error(`Could not save user: ${user.discordId}`);
+    throw new Error(`Could not save user: ${verify.discordId}`);
   }
 };
 
@@ -75,5 +75,5 @@ export default {
   saveUser,
   getUser,
   deleteUser,
-  saveVerifiedUser,
+  saveVerifiedUser
 };
