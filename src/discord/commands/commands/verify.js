@@ -24,10 +24,10 @@ export default {
       message.channel.send(`User Error Message: ${e}`);
     }
 
-    if (args.length === 1) {
-      message.channel.send('Public key is missing');
-    } else {
+  //   if (args.length === 1) {
+    //   message.channel.send('Public key is missing');
+  //   } else {
       message.channel.send(getTokenLink(hashVerifyToken));
-    }
+  //   }
   },
 };
