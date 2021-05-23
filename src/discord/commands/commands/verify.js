@@ -13,11 +13,7 @@ export default {
     const getTokenLink = (token) => `https://verify.grapes.network/?token=${token}`;
     const hashVerifyToken = sha256(`GRAPE${moment().format('x')}`);
     try {
-      await UserService.saveVerifiedUser({
-        discordId: message.author.id,
-        discordServerId: '--discord server id--',
-        generatedUserToken: hashVerifyToken,
-      });
+            await UserService.saveVerifiedUser({ discordId: message.author.id,  discordServerId: `837189238289203201`, generatedUserToken: hashVerifyToken.toString() });
     } catch (e) {
       // Object.keys(client.guilds).forEach((row) => {
       //   console.log(row);
