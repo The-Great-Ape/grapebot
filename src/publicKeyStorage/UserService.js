@@ -75,5 +75,5 @@ export default {
   saveUser,
   getUser,
   deleteUser,
-  saveVerifiedUser
+  saveVerifiedUser,
 };

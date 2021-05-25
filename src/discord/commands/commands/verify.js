@@ -13,7 +13,7 @@ export default {
     const getTokenLink = (token) => `https://verify.grapes.network/?token=${token}`;
     const hashVerifyToken = sha256(`GRAPE${moment().format('x')}`);
     try {
-            await UserService.saveVerifiedUser({ discordId: message.author.id,  discordServerId: `837189238289203201`, generatedUserToken: hashVerifyToken.toString() });
+      await UserService.saveVerifiedUser({ discordId: message.author.id, discordServerId: '837189238289203201', generatedUserToken: hashVerifyToken.toString() });
     } catch (e) {
       // Object.keys(client.guilds).forEach((row) => {
       //   console.log(row);
@@ -24,10 +24,10 @@ export default {
       message.channel.send(`User Error Message: ${e}`);
     }
 
-  //   if (args.length === 1) {
+    //   if (args.length === 1) {
     //   message.channel.send('Public key is missing');
-  //   } else {
-      message.channel.send(getTokenLink(hashVerifyToken));
+    //   } else {
+    message.channel.send(getTokenLink(hashVerifyToken));
   //   }
   },
 };
