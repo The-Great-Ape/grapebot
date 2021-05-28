@@ -1,3 +1,4 @@
+/*
 import UserService from '../../../publicKeyStorage/UserService';
 import { COMMAND_PREFIX } from '../../../config';
 import Wallet from '../../../wallet';
@@ -29,3 +30,4 @@ export default {
     message.channel.send(`🥳 You can now receive tips through discord at this address: ${publicKeyString} 🥳`);
   },
 };
+*/
