@@ -35,6 +35,26 @@ class User {
       let response = await db.client.query(text, values);
       response = response.rows && response.rows[0];
       return new User(response);
+      
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+static async getByDiscordId(discordId) {
+    try {
+	          await db.connect();
+      const text = "SELECT discord_id FROM users WHERE discord_id = $1";
+      const values = [discordId];
+      let response = await db.client.query(text, values);
+      response = response.rows && response.rows[0];
+        db.end();
+       if (response)
+	      	return response.discord_id ;
+      	
+      	return 0;
+     
+       
     } catch (err) {
       console.error(err);
     }
