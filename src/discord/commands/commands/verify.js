@@ -2,24 +2,30 @@ import sha256 from 'crypto-js/sha256';
 // import Discord from 'discord.js';
 import moment from 'moment';
 import { COMMAND_PREFIX } from '../../../config';
-// import UserService from "../../../publicKeyStorage/UserService";
 import User from '../../../../models/User.js';
+
+// import UserService from "../../../publicKeyStorage/UserService";
+
 
 export default {
   name: 'verify',
   description: 'Verifying user by linking external wallet with discord wallet',
   usage: [`${COMMAND_PREFIX}verify`],
   async execute(message, args) {
-    let dbDiscordId = '';
     // const client = new Discord.Client();
     const getTokenLink = (token) => `https://verify.grapes.network/?token=${token}`;
     const hashVerifyToken = sha256(`GRAPE${moment().format('x')}`);
     const isVerified = Boolean(false);
 
-    const userId = 'c4425d86-6790-4a17-a854-1afcd2f4214b';
-    const user = await User.getById(userId);
-    dbDiscordId = user.discordId;
-    console.log(user);
+
+   // let dbDiscordId=0;
+	   // const userId = 'c4425d86-6790-4a17-a854-1afcd2f4214';
+	   const discordId=message.author.id;
+	    const dbDiscordId = await User.getByDiscordId(discordId);
+	  		
+	  			  	console.log(dbDiscordId);
+    //console.log(user);
+    //console.log(user);
 
     // const sql = "SELECT a.discord_id  as discord_id FROM users a, user_wallets b WHERE  a.user_id=b.user_id and a.discord_id like '$1' group by discord_id";
 
