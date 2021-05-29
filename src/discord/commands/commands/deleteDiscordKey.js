@@ -1,4 +1,5 @@
-import UserService from '../../../publicKeyStorage/UserService';
+/*
+	import UserService from '../../../publicKeyStorage/UserService';
 import { COMMAND_PREFIX } from '../../../config';
 
 export default {
@@ -11,3 +12,4 @@ export default {
     message.channel.send('ℹ️ You can no longer be tipped through discord ℹ️');
   },
 };
+*/

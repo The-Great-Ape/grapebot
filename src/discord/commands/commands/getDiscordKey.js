@@ -1,3 +1,4 @@
+/*
 import UserService from '../../../publicKeyStorage/UserService';
 import { COMMAND_PREFIX } from '../../../config';
 
@@ -20,3 +21,4 @@ export default {
     message.channel.send(`Your discord public key: ${user.publicKey}`);
   },
 };
+*/
