@@ -1,7 +1,10 @@
+/* eslint-disable no-console */
 import Discord from 'discord.js';
 import CommandUtil from './commands';
 import { COMMAND_PREFIX } from '../config';
 import Wallet from '../wallet';
+
+const roleClaim = require('./role-claim');
 
 const initHandler = async () => {
   const client = new Discord.Client();
@@ -9,6 +12,7 @@ const initHandler = async () => {
 
   client.once('ready', () => {
     console.log('Ready!');
+    roleClaim(client);
   });
 
   client.on('message', async (message) => {
