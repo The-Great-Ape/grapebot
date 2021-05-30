@@ -2,6 +2,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
+import User from '../../models/User.js';
+
 const firstMessage = require('./first-message');
 
 module.exports = (client) => {
@@ -10,13 +12,13 @@ module.exports = (client) => {
   const getEmoji = (emojiName) => client.emojis.cache.find((emoji) => emoji.name === emojiName);
 
   const emojis = {
-    beachbum: 'VIP',
-    beachbum2: 'Verified',
+    medianetwork: 'MEDIA Holder',
+    walletv2: 'Verified Wallet',
   };
 
   const reactions = [];
 
-  let emojiText = 'Click on the emoji to get VERIFIED!\n\n';
+  let emojiText = 'Gated SPL token community access!\n\n';
   for (const key in emojis) {
     const emoji = getEmoji(key);
     reactions.push(emoji);
@@ -27,8 +29,8 @@ module.exports = (client) => {
 
   firstMessage(client, channelId, emojiText, reactions);
 
-  const handleReaction = (reaction, user, add) => {
-    if (user.id === '489385334560522241') {
+  const handleReaction = async(reaction, user, add) => {
+    if (user.id === '842808213161508934') {
       return;
     }
 
@@ -45,7 +47,9 @@ module.exports = (client) => {
     const member = guild.members.cache.find((member) => member.id === user.id);
 
     if (add) {
-      member.roles.add(role);
+        const discordId=member.id;
+	    const dbDiscordId = await User.getByDiscordId(discordId);        
+         member.roles.add(role);
     }
     // else {
     //   member.roles.remove(role);
