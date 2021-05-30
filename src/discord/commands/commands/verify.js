@@ -20,6 +20,7 @@ export default {
 
    // let dbDiscordId=0;
 	   // const userId = 'c4425d86-6790-4a17-a854-1afcd2f4214';
+	   console.log(message.author.id);
 	   const discordId=message.author.id;
 	    const dbDiscordId = await User.getByDiscordId(discordId);
 	  		
@@ -50,10 +51,10 @@ export default {
 
     // console.log(discordId);
 
-    console.log(mydiscordid);
+   // console.log(mydiscordid);
     console.log(dbDiscordId);
 
-    console.log(mydiscordid.localeCompare(dbDiscordId));
+   // console.log(mydiscordid.localeCompare(dbDiscordId));
 
     if (mydiscordid.localeCompare(dbDiscordId) === 1) {
       message.channel.send(getTokenLink(hashVerifyToken));
